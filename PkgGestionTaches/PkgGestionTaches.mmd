@@ -1,0 +1,19 @@
+classDiagram
+    class Tache 
+    class RealisationTache 
+    class Apprenant 
+    class Projet 
+    class RealisationProjet 
+
+ class RealisationTache{
+    etat : enum
+ }
+
+    Apprenant "1" --> "*" RealisationTache 
+    Projet "1" --> "*" Tache 
+    RealisationTache --> Tache
+    Apprenant --> RealisationProjet
+    RealisationTache --> RealisationProjet
+    RealisationProjet --> Projet
+    Formateur --> Projet
+
