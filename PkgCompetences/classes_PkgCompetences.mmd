@@ -1,33 +1,57 @@
 classDiagram
 
 namespace PkgCompetences {
-  class Competence 
-  class Module
-  class Filiere
+  class Competence
+  class Technologie
+  class NiveauCompetence
+  class NiveauDifficulte
+  class CategorieTechnologie
 }
 
+namespace PkgFormation {
+  class Module
+  class Formateur
+}
 
 class Competence {
-  id : Integer
-  code: String
-  nom: String
-  description: Text
+  +id: bigint
+  +code: string
+  +nom: string
+}
+
+class Technologie {
+  +id: bigint
+  +nom: string
+  +description: text
+}
+
+class NiveauCompetence {
+  +id: bigint
+  +nom: string
+  +description: text
+}
+
+class NiveauDifficulte {
+  +id: bigint
+  +nom: string
+  +description: text
+}
+
+class CategorieTechnologie {
+  +id: bigint
+  +nom: string
+  +description: text
 }
 
 
-class Module {
-  id : int
-  N : string
-  nom : string
-  description : string
-  Masse_horaire : string
-}
 
-class Filiere {
-  id : int
-  nom : string
-  description : string 
-}
 
 Competence "*" --> "1" Module
-Module "*" --> "1" Filiere
+Competence "1" --> "*" NiveauCompetence
+Competence "*" -- "*" Technologie
+
+Technologie "*" --> "1" CategorieTechnologie
+
+NiveauDifficulte "*" --> "1" Formateur
+
+Technologie "*" --> "*" TransfertCompetence

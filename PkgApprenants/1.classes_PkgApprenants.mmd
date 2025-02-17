@@ -1,0 +1,75 @@
+classDiagram
+
+namespace PkgApprenants {
+  class ApprenantKonosys
+  class Apprenant
+  class Ville
+  class Nationalite
+  class NiveauScolaire
+  class Groupe
+}
+
+namespace PkgAutorisation {
+  class User
+}
+
+namespace PkgFormation {
+  class Formateur
+  class Filiere
+  class AnneeFormation
+}
+
+class Groupe {
+  +id: bigint
+  +code: string
+  +nom: string
+  +description: text
+}
+
+class Apprenant {
+  +id: bigint
+  +nom: string
+  +prenom: string
+  +prenom_arab: string
+}
+
+
+
+
+class Ville {
+  +id: bigint
+  +nom: string
+  +reference: string
+}
+
+class Nationalite {
+  +id: bigint
+  +code: string
+  +nom: string
+  +description: text
+}
+
+class NiveauScolaire {
+  +id: bigint
+  +code: string
+  +nom: string
+}
+
+
+
+Apprenant "*" --> "1" Ville
+Apprenant "*" --> "1" Nationalite
+Apprenant "*" --> "1" NiveauScolaire
+Apprenant "*" --> "*" Groupe
+Apprenant "1" --> "1" User
+
+Formateur "*" --> "1" Ville
+Formateur "1" --> "1" User
+
+Groupe "*" --> "1" AnneeFormation
+Groupe "*" --> "1" Filiere
+
+note for AnneFormation "Ajouter une année de formation"
+note for Apprenant "L'apprenant peut avoir un groupe par années"
+note for Apprenant "Apprenant avoir un user"
+note for Ville "à ajouter"
